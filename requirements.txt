@@ -1,0 +1,4 @@
+picamera==1.11
+pyttsx==1.1
+##zbar==0.10
+-e git://github.com/npinchot/zbar#egg=zbar
