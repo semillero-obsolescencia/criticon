@@ -25,17 +25,17 @@ while x != "no":
   x = raw_input()
   if x == "uno":
     uno = random.choice(rang)
-    habla = uno
+    habla = "Angelica/" + uno
     print habla
     espeak()
   elif x == "dos":
     dos = random.choice(rdavid)
-    habla = dos 
+    habla = "David" + dos 
     print habla
     espeak()
   elif x == "tres":
     tres = random.choice(rcarla)
-    habla = tres
+    habla = "Carla" + tres
     print habla
     espeak()
   else:
