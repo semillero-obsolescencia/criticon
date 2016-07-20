@@ -1,6 +1,1 @@
-esta es una prueba de texto para el laboratorio cano
-vamos a probar como se lee desde un archivo de texto 
-para eso necesitamos escribir este texto y luego quiza hacer un parse por las lineas del texto 
-podria ser la manera mas sencilla de programar
-por lo menos para mi ... 
-pero no sabemos para quien mas en fin ya lo sabremos
+esta es una prueba de texto para el laboratorio cano vamos a probar como se lee desde un archivo de texto para eso necesitamos escribir este texto y luego quiza hacer un parse por las lineas del texto 
