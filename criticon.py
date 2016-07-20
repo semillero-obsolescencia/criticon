@@ -1,11 +1,13 @@
+#coding:utf-8
 #!/usr/bin/python
 
 ## taken from https://gist.github.com/loleg/5b581d774fc8500325f7
-
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+import random
 import time
 import sys
+import json
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 import cv2
 import zbar
 import festival
@@ -14,14 +16,18 @@ from PIL import Image
 # Debug mode
 DEBUG = True
 if len(sys.argv) > 1:
-	DEBUG = sys.argv[-1] == 'DEBUG'
+    DEBUG = sys.argv[-1] == 'DEBUG'
 
 # Configuration options
 FULLSCREEN = not DEBUG
 if not DEBUG:
     RESOLUTION = (640, 480)
 else:
-	RESOLUTION = (480, 270)
+    RESOLUTION = (480, 270)
+
+json_file = open("data/db.json")
+
+db = json.load(json_file)
 
 # Initialise Raspberry Pi camera
 camera = PiCamera()
@@ -36,12 +42,19 @@ rawCapture = PiRGBArray(camera, size=RESOLUTION)
 time.sleep(0.1)
 print "PiCamera ready"
 
+
+# load json data file
+jf = open("data/db.json")
+db = json.load(jf)
+
+festival.execCommand("(voice_el_diphone)")
+
 # Initialise OpenCV window
 if FULLSCREEN:
-	cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
-	cv2.setWindowProperty("#iothack15", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty("#iothack15", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
 else:
-	cv2.namedWindow("#iothack15")
+    cv2.namedWindow("#iothack15")
 
 print "OpenCV version: %s" % (cv2.__version__)
 print "Press q to exit ..."
@@ -69,7 +82,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
-        festival.sayText(streeng)
+        tags = db['codes'][str(symbol.data)]
+        text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
+        print(text)
+        festival.sayText(text)
+
 
     # show the frame
     cv2.imshow("#iothack15", output)
@@ -80,7 +97,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # Wait for the magic key
     keypress = cv2.waitKey(1) & 0xFF
     if keypress == ord('q'):
-    	break
+        break
 
 # When everything is done, release the capture
 camera.close()
