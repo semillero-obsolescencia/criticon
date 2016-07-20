@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+## taken from https://gist.github.com/loleg/5b581d774fc8500325f7
+
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import time
