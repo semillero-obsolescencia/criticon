@@ -14,12 +14,12 @@ import festival
 from PIL import Image
 
 # Debug mode
-DEBUG = True
+DEBUG = False
 if len(sys.argv) > 1:
-    DEBUG = sys.argv[-1] == 'DEBUG'
+    DEBUG = sys.argv[-1] == '-d'
 
 # Configuration options
-FULLSCREEN = not DEBUG
+
 if not DEBUG:
     RESOLUTION = (640, 480)
 else:
@@ -50,11 +50,11 @@ db = json.load(jf)
 festival.execCommand("(voice_el_diphone)")
 
 # Initialise OpenCV window
-if FULLSCREEN:
-    cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
-    cv2.setWindowProperty("#iothack15", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
-else:
-    cv2.namedWindow("#iothack15")
+if DEBUG:
+    #cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
+    #cv2.setWindowProperty("#iothack15", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    cv2.namedWindow("#criticon")
+
 
 print "OpenCV version: %s" % (cv2.__version__)
 print "Press q to exit ..."
@@ -89,7 +89,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 
     # show the frame
-    cv2.imshow("#iothack15", output)
+    if DEBUG:
+        cv2.imshow("#criticon", output)
 
     # clear stream for next frame
     rawCapture.truncate(0)
@@ -101,4 +102,5 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 # When everything is done, release the capture
 camera.close()
-cv2.destroyAllWindows()
+if DEBUG:
+    cv2.destroyAllWindows()
