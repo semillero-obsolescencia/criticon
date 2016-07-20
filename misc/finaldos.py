@@ -13,6 +13,7 @@ def espeak():
     print 'running speech-test.py...'
     engine = pyttsx.init()
     engine.setProperty("rate",40)
+    engine.setProperty("volume",1.0)
     voices = engine.getProperty("voices")
     engine.setProperty("voice", voices[19].id)
     with open (habla)as f:
