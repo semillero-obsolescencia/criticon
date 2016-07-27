@@ -48,7 +48,6 @@ jf = open("data/db.json")
 db = json.load(jf)
 
 festival.execCommand("(voice_el_diphone)")
-
 # Initialise OpenCV window
 if DEBUG:
     #cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
@@ -61,6 +60,8 @@ print "Press q to exit ..."
 
 scanner = zbar.ImageScanner()
 scanner.parse_config('enable')
+
+festival.sayText("Criticon ha despertado, buscando codigo de barras")
 
 # Capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
