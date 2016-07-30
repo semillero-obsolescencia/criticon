@@ -25,3 +25,19 @@ Clonar el repositorio e instalar las librerías de python:
 ```
 pip install -r requirements.txt
 ```
+
+
+# Script de inicio
+```
+sudo cp init/criticon.service /lib/systemd/system/
+sudo chmod 644 /lib/systemd/system/criticon.service
+sudo systemctl daemon-reload
+sudo systemctl enable criticon.service
+```
+
+Para probarlo:
+
+```
+pi@raspberrypi:~/code/criticon/init $ sudo systemctl start criticon.service
+pi@raspberrypi:~/code/criticon/init $ sudo systemctl status criticon.service
+```

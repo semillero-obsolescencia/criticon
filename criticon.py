@@ -42,11 +42,7 @@ rawCapture = PiRGBArray(camera, size=RESOLUTION)
 time.sleep(0.1)
 print "PiCamera ready"
 
-
-# load json data file
-jf = open("data/db.json")
-db = json.load(jf)
-
+#sele
 festival.execCommand("(voice_el_diphone)")
 
 # Initialise OpenCV window
