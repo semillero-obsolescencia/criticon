@@ -1,0 +1,11 @@
+[Unit]
+Description=Criticon service
+After=multi-user.target
+
+[Service]
+Type=idle
+User=pi
+ExecStart=/home/pi/code/criticon/init/init_criticon.sh
+
+[Install]
+WantedBy=multi-user.target
