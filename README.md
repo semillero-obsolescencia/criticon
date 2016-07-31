@@ -23,6 +23,8 @@ Soporte para voces en festival
 
 
 https://www.raspberrypi.org/forums/viewtopic.php?f=76&t=123283
+https://vijamaroylinux.blogspot.com.co/2008/12/festival-un-conversor-de-texto-voz.html
+
 
 Clonar el repositorio e instalar las librerías de python:
 
