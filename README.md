@@ -19,6 +19,10 @@ Instalar opencv 3 en raspberrypi:
 
 http://www.pyimagesearch.com/2015/10/26/how-to-install-opencv-3-on-raspbian-jessie/un
 
+Soporte para voces en festival
+
+
+https://www.raspberrypi.org/forums/viewtopic.php?f=76&t=123283
 
 Clonar el repositorio e instalar las librerías de python:
 
@@ -38,6 +42,12 @@ sudo systemctl enable criticon.service
 Para probarlo:
 
 ```
-pi@raspberrypi:~/code/criticon/init $ sudo systemctl start criticon.service
-pi@raspberrypi:~/code/criticon/init $ sudo systemctl status criticon.service
+sudo systemctl start criticon.service
+sudo systemctl status criticon.service
+```
+
+Para parar el servicio
+
+```
+sudo systemctl stop criticon.service
 ```
