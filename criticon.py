@@ -1,10 +1,11 @@
-#coding:utf-8
+#coding:latin-1
 #!/usr/bin/python
 
 ## taken from https://gist.github.com/loleg/5b581d774fc8500325f7
-import random
-import time
+import os
 import sys
+import time
+import random
 import json
 from picamera.array import PiRGBArray
 from picamera import PiCamera
@@ -57,7 +58,9 @@ print "Press q to exit ..."
 scanner = zbar.ImageScanner()
 scanner.parse_config('enable')
 
-festival.sayText("Criticon ha despertado, buscando codigo de barras")
+
+#festival.sayText("Criticon ha despertado, buscando codigo de barras")
+os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
 # Capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -82,7 +85,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         tags = db['codes'][str(symbol.data)]
         text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
         print(text)
-        festival.sayText(text.encode('latin-1'))
+        cmd = "echo " + text.encode('utf-8') + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
+        os.system(cmd)
+        #festival.sayText(text.encode('latin-1'))
 
 
     # show the frame

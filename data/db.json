@@ -5,9 +5,9 @@
     "El buen manejo del material y su afinidad con el museo permiten apreciar la unidad y hace dialogar las dos partes de esta dicotomía."
   ],
   "bidi": [
-    "El manejo de las tonalidades dado por el artista me recuerda claramente a las varguardias europeas en su busqueda por una paleta de colores renovada",
-    "Los valores pictoricos de esta pieza demuestran todo lo poetico que puede contener una imagen",
-    "Se ve de manera evidente la expresividad del artista en la obra por medio del trazo y la pulsion de la linea"
+    "El manejo de las tonalidades dado por el artista me recuerda claramente a las varguardias europeas en su búsqueda por una paleta de colores renovada",
+    "Los valores pictóricos de esta pieza demuestran todo lo poético que puede contener una imagen. ",
+    "Se ve de manera evidente la expresividad del artista en la obra, por medio del trazo y la pulsión de la línea. "
   ],
   "instalacion": [
     "LA MEZCLA DE TODOS LOS ELEMENTOS GENERA DIFERENTES NIVELES DE TEXTURA MUY INTERESANTES A LA VISTA. ",
@@ -30,12 +30,13 @@
   "identidad": [
     "Por tanto las estratégias de representación aplicadas en esta obra cuestionan las intenciones figurativas del arte contemporáneo.",
     "Igualmente la repetición de la individualidad del sujeto en la cotidianidad desdibuja la identidad personal.",
-    "Por esto, la referencia directa a la memoria y su solubilidad sumerge al espectador en una experiencia íntima e individual"
+    "Por esto, la referencia directa a la memoria y su solubilidad sumerge al espectador en una experiencia íntima e individual."
   ],
   "codes":{
     "0001":["bidi", "identidad"],
     "0002":["escultura", "ruina"],
-    "0003":["instalacion","organico"]
+    "0003":["instalacion","organico"],
+    "TODO ESTA CANO": ["bidi", "identidad"]
   },
   "conectores":[ "EN CONCLUSION",	"ADICIONALMENTE",	"POR TANTO","POR OTRO LADO",	"ADEMAS",	"IGUALMENTE"]
 }
