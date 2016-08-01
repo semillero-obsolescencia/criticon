@@ -1,41 +1,50 @@
 {
   "escultura": [
-    "Los valores escultóricos de la obra resaltan el buen manejo del espacio y el volumen con relación a su ubicación en el museo y la percepción del espectador",
+    "Los valores escultóricos de la obra resaltan el buen manejo del espacio y el volumen con relación a su ubicación en el museo y la percepción del espectador.",
     "Las dimensiones de esta pieza dejan claro que la monumentalidad de una obra de arte no está en su tamaño sino en su potencial de impacto sobre el espectador.",
-    "El buen manejo del material y su afinidad con el museo permiten apreciar la unidad y hace dialogar las dos partes de esta dicotomía."
+    "La volumentría propuesta por el artista juega con el recorrido visual que crea cada espectador en su en encuentro con la pieza.",
+    "El buen manejo del material y su afinidad con el museo permiten apreciar la unidad, haciendo dialogar las dos partes de esta dicotomía."
   ],
   "bidi": [
-    "El manejo de las tonalidades dado por el artista me recuerda claramente a las varguardias europeas en su búsqueda por una paleta de colores renovada",
+    "El manejo de las tonalidades dado por el artista me recuerda claramente a las varguardias europeas en su búsqueda por una paleta de colores renovada.",
     "Los valores pictóricos de esta pieza demuestran todo lo poético que puede contener una imagen. ",
-    "Se ve de manera evidente la expresividad del artista en la obra, por medio del trazo y la pulsión de la línea. "
+    "El gesto que se imprime en la superficie enriquece la experiencia de contemplación.",
+    "Es evidente la expresividad del artista en la obra, por medio del trazo y la pulsión de la línea."
   ],
   "instalacion": [
-    "LA MEZCLA DE TODOS LOS ELEMENTOS GENERA DIFERENTES NIVELES DE TEXTURA MUY INTERESANTES A LA VISTA. ",
-    "LA PIEZA LOGRA UNA EVIDENTE INTERVENCION EN EL MUSEO ENRIQUECIENDO LA APRECIACION DE LA BRA Y LA ARQUITECTURA.",
-    "EL LABORATORIO CANO INSERTA DE MANERA ADECUADA ESTA OBRA A LA MUSEOGRAFIA, GENERANDO UN PERFECTO DIALOGO CON LAS OTRAS PIEZAS.",
-    "EL RECORRIDO PLANTEADO POR LA PIEZA DEJA PERCIBIR LA TOTALIDAD DE SU DIMENSION Y LA COMLEJIDAD INTERTEXTUAL EN LA QUE SE SUMERGE EL ESPECTADOR."
+    "La mezcla de todos los elementos genera diferentes niveles de textura muy interesantes a la vista.",
+    "La pieza logra una evidente intervencion en el museo enriqueciendo la apreciacion de la obra y la arquitectura.",
+    "El laboratorio cano inserta de manera adecuada esta obra a la museografia, generando un perfecto dialogo con las otras piezas.",
+    "El recorrido planteado por la pieza deja percibir la totalidad de su dimensión y la comlejidad intertextual en la que se sumerge el espectador."
   ],
   "ruinas": [
-    "EN CONCLUSION, LA FORMA DE EXALTACION DE LAS RUINAS EVOCAN LA MELANCOLIA DEL PASADO.",
-    "POR OTRO LADO, LOS INDICES DE LA ACCION HUMANA SON EVIDENCIADOS POR EL ARTISTA Y TRADUCIDOS A UN LENGUAJE SENSIBLE.",
-    "ASI EL DESVANECIMIENTO DE LA ESENCIA DE LA PIEZA RESULTA EN UN IDEAL ROMANTICO Y POETICO DE LA OBRA DE ARTE.",
-    "CONSECUENTEMENTE EL VESTIGIO DEL TIEMPO SOBRE LOS MATERIALES ANADE TODA LA FUERZA QUE NECESITA LA PIEZA."
+    "En conclusión, la forma de exaltacion de las ruinas evocan la melancolia del pasado.",
+    "Por otro lado, los indices de la acción humana son evidenciados por el artista y traducidos a un lenguaje sensible.",
+    "Asi, el desvanecimiento de la esencia de la pieza resulta en un ideal romantico y poetico de la obra de arte.",
+    "Consecuentemente, el vestigio del tiempo sobre los materiales añade toda la fuerza que necesita la pieza."
   ],
   "organico": [
-    "ADICIONALMENTE LA MATERIALIDAD DE LA PIEZA HABLA DE LA PERSISTENCIA DE LO ORGANICO EN LA NATURALIDAD DE LA VIDA",
-    "ADEMAS CONCEPTUALMENTE SE PERCIBEN LAS INTENCIONES DEL ARTISTA POR REFERIR EL PASO DEL TIEMPO Y LOS INDICES QUE ESTO DEJA",
-    "Y DE MANERA OPORTUNA LA INTERACCION DEL ESPECTADOR CON LA OBRA REMITE DE FORMA INMINENTE AL RASTRO DE LA HUELLA HUMANA EN LA VIDA",
-    "DE ESTE MODO LO ORGANICO DEL MATERIAL Y SU CONTRASTE EN RELACION CON EL MUSEO REFUERZAN CONCEPTUALMENTE EL DISCURSO DEL ARTISTA. "
+    "Adicionalmente, la materialidad de la pieza habla de la persistencia de lo organico en la naturalidad de la vida.",
+    "Además, conceptualmente se perciben las intenciones del artista por referir el paso del tiempo y los indices que este deja.",
+    "Y de manera oportuna, la interaccion del espectador con la obra remite de forma inminente al rastro de la huella humana en la vida.",
+    "De este modo lo organico del material y su contraste en relacion con el museo refuerzan conceptualmente el discurso del artista. "
   ],
   "identidad": [
-    "Por tanto las estratégias de representación aplicadas en esta obra cuestionan las intenciones figurativas del arte contemporáneo.",
-    "Igualmente la repetición de la individualidad del sujeto en la cotidianidad desdibuja la identidad personal.",
+    "Por tanto, las estratégias de representación aplicadas en esta obra cuestionan las intenciones figurativas del arte contemporáneo.",
+    "Igualmente, la repetición de la individualidad del sujeto en la cotidianidad desdibuja la identidad personal.",
+    "Complementandose, con la clara alusión al desvirtuado estado de la unicidad en medio de la multitud de la sociedad actual",
     "Por esto, la referencia directa a la memoria y su solubilidad sumerge al espectador en una experiencia íntima e individual."
   ],
   "codes":{
     "0001":["bidi", "identidad"],
-    "0002":["escultura", "ruina"],
-    "0003":["instalacion","organico"],
+    "0002":["bidi", "organico"],
+    "0003":["bidi","ruinas"],
+    "0004":["escultura", "identidad"],
+    "0005":["escultura", "organico"],
+    "0006":["escultura","ruinas"],
+    "0007":["instalacion", "identidad"],
+    "0008":["instalacion", "organico"],
+    "0003":["instalacion","ruinas"],
     "TODO ESTA CANO": ["bidi", "identidad"]
   },
   "conectores":[ "EN CONCLUSION",	"ADICIONALMENTE",	"POR TANTO","POR OTRO LADO",	"ADEMAS",	"IGUALMENTE"]
