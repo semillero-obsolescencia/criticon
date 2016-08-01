@@ -82,12 +82,19 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
-        tags = db['codes'][str(symbol.data)]
-        text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
-        print(text)
-        cmd = "echo " + text.encode('utf-8') + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
-        os.system(cmd)
-        #festival.sayText(text.encode('latin-1'))
+	try:
+            tags = db['codes'][str(symbol.data)]
+
+            _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
+            text = _text.encode('utf-8')
+            print(text)
+            cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
+            os.system(cmd)
+            #festival.sayText(text.encode('latin-1'))
+
+        except KeyError:
+            os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+            
 
 
     # show the frame
