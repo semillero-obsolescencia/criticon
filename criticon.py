@@ -42,8 +42,8 @@ rawCapture = PiRGBArray(camera, size=RESOLUTION)
 time.sleep(0.1)
 print "PiCamera ready"
 
-#sele
-festival.execCommand("(voice_el_diphone)")
+#seleccionar voz en espaõl
+festival.execCommand("(voice_JuntaDeAndalucia_es_sf_diphone)")
 # Initialise OpenCV window
 if DEBUG:
     #cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
@@ -82,7 +82,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         tags = db['codes'][str(symbol.data)]
         text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
         print(text)
-        festival.sayText(text)
+        festival.sayText(text.encode('latin-1'))
 
 
     # show the frame
