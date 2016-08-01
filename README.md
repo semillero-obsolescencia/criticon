@@ -53,3 +53,14 @@ Para parar el servicio
 ```
 sudo systemctl stop criticon.service
 ```
+
+
+# Fuentes
+
+Dynamixion Script
+
+https://www.fontsquirrel.com/fonts/DymaxionScript?q%5Bterm%5D=retro&q%5Bsearch_check%5D=Y
+
+Top Speed
+
+http://www.dafont.com/top-speed.font
