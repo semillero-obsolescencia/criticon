@@ -5,7 +5,11 @@ Carrito de mercado autónomo de generación de discursos estéticos.
 
 # Instalación
 
-En linux (raspbian jessie ) necesitará instalar `festival`, `espeak` y `zbar`:
+Instalar opencv 3 en raspberrypi:
+
+http://www.pyimagesearch.com/2015/10/26/how-to-install-opencv-3-on-raspbian-jessie/un
+
+En linux (raspbian jessie ) necesitará instalar `festival` y `zbar`:
 
 ```
 sudo apt-get install festival festival-dev espeak zbar-tools libzbar-dev
@@ -14,16 +18,6 @@ sudo apt-get install festival festival-dev espeak zbar-tools libzbar-dev
 Instalar la voz en español de festival
 
 ```sudo apt-get install festvox-ellpc11k```
-
-Instalar opencv 3 en raspberrypi:
-
-http://www.pyimagesearch.com/2015/10/26/how-to-install-opencv-3-on-raspbian-jessie/un
-
-Soporte para voces en festival
-
-
-https://www.raspberrypi.org/forums/viewtopic.php?f=76&t=123283
-https://vijamaroylinux.blogspot.com.co/2008/12/festival-un-conversor-de-texto-voz.html
 
 
 Instalar voces en español con soporte para acentos:
@@ -77,3 +71,11 @@ https://www.fontsquirrel.com/fonts/DymaxionScript?q%5Bterm%5D=retro&q%5Bsearch_c
 Top Speed
 
 http://www.dafont.com/top-speed.font
+
+
+## Referencias
+
+Soporte para voces en festival
+
+https://www.raspberrypi.org/forums/viewtopic.php?f=76&t=123283
+https://vijamaroylinux.blogspot.com.co/2008/12/festival-un-conversor-de-texto-voz.html
