@@ -11,7 +11,7 @@ Bajar el código del proyecto
 git clone git@github.com:semillero-obsolescencia/criticon.git
 ```
 
-Instalar opencv 3 en raspberrypi:
+## 1: Instalar opencv 3 en raspberrypi:
 
 Para instalar opencv3 en raspberrypi seguir este tutorial:
 
@@ -26,6 +26,8 @@ cp criticon/misc/nstall-opencv.sh ./
 sudo chmod +x install-opencv.sh
 ./install-opencv.sh
 ```
+
+## 2: Instalar dependencias y paquetes para el proyecto
 
 En linux (raspbian jessie ) necesitará instalar `festival` y `zbar`:
 
@@ -51,12 +53,33 @@ sudo dpkg -i festvox-sflpc16k_1.0-1_all.deb
 Clonar el repositorio del proyecto e instalar las librerías de python:
 
 ```
+workon criticon
 cd criticon
 pip install -r requirements.txt
 ```
 
+# Uso
 
-# Script de inicio
+Para iniciar el criticon debe activarse el entorno virtual de python, luego descender en el directorio del proyecto.
+
+```
+workon criticon
+cd criticon
+```
+
+Luego  ejecutar el script ```criticon.py``` desde una terminal, o una conexion ssh:
+
+```
+python criticon.py
+```
+
+O si está corriendo  el servidor X y la interfaz gráfica de usuario en raspbian, es posible ejecutar el script con la opción ```-d``` para monitorear la cámara.
+
+```
+python criticon.py -d
+```
+
+## Script de inicio
 
 Configuración de la raspberrypi para que inicie criticón automáticamente al iniciar el sistema.
 ```
@@ -80,7 +103,7 @@ sudo systemctl stop criticon.service
 ```
 
 
-# Fuentes
+### Fuentes tipográficas para el Criticon2000
 
 Dynamixion Script
 
