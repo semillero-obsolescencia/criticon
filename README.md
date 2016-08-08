@@ -26,14 +26,27 @@ https://www.raspberrypi.org/forums/viewtopic.php?f=76&t=123283
 https://vijamaroylinux.blogspot.com.co/2008/12/festival-un-conversor-de-texto-voz.html
 
 
-Clonar el repositorio e instalar las librerías de python:
+Instalar voces en español con soporte para acentos:
 
 ```
+cd ~/code
+git clone https://github.com/guadalinex-archive/hispavoces.git
+cd hispavoces/packages
+sudo dpkg -i festvox-palpc16k_1.0-1_all.deb
+sudo dpkg -i festvox-sflpc16k_1.0-1_all.deb
+```
+
+Clonar el repositorio del proyecto e instalar las librerías de python:
+
+```
+cd ~/code
 pip install -r requirements.txt
 ```
 
 
 # Script de inicio
+
+Configuración de la raspberrypi para que inicie criticón automáticamente al iniciar el sistema.
 ```
 sudo cp init/criticon.service /lib/systemd/system/
 sudo chmod 644 /lib/systemd/system/criticon.service
