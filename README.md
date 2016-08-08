@@ -5,9 +5,27 @@ Carrito de mercado autónomo de generación de discursos estéticos.
 
 # Instalación
 
+Bajar el código del proyecto
+
+```
+git clone git@github.com:semillero-obsolescencia/criticon.git
+```
+
 Instalar opencv 3 en raspberrypi:
 
+Para instalar opencv3 en raspberrypi seguir este tutorial:
+
 http://www.pyimagesearch.com/2015/10/26/how-to-install-opencv-3-on-raspbian-jessie/un
+
+O hacer la mas fácil: usar el script de instalación incluído en el codigo:
+
+**Advertencia: Este script fué probado en raspbian Jessie, y compila e instala opencv3 para python3.**
+
+```
+cp criticon/misc/nstall-opencv.sh ./
+sudo chmod +x install-opencv.sh
+./install-opencv.sh
+```
 
 En linux (raspbian jessie ) necesitará instalar `festival` y `zbar`:
 
@@ -23,7 +41,7 @@ Instalar la voz en español de festival
 Instalar voces en español con soporte para acentos:
 
 ```
-cd ~/code
+cd ~/
 git clone https://github.com/guadalinex-archive/hispavoces.git
 cd hispavoces/packages
 sudo dpkg -i festvox-palpc16k_1.0-1_all.deb
@@ -32,8 +50,8 @@ sudo dpkg -i festvox-sflpc16k_1.0-1_all.deb
 
 Clonar el repositorio del proyecto e instalar las librerías de python:
 
-```
-cd ~/code
+
+cd criticon
 pip install -r requirements.txt
 ```
 
