@@ -50,7 +50,7 @@ sudo dpkg -i festvox-sflpc16k_1.0-1_all.deb
 
 Clonar el repositorio del proyecto e instalar las librerías de python:
 
-
+```
 cd criticon
 pip install -r requirements.txt
 ```
