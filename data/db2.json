@@ -56,29 +56,13 @@
     "El encontrarse entre dos limites, dos muros, dos numeros, que no permiten el paso fisico de distintos fenomenos, es una alegoria sublime a las imposibilidades que tiene el hombre en la vida. "
   ],
   "codes": {
-    "0001": [
-      "laura_curry"
-    ],
-    "0002": [
-      "radio_el_lugar"
-    ],
-    "0003": [
-      "andres_cepeda"
-    ],
-    "0004": [
-      "christian_mendoza"
-    ],
-    "0005": [
-      "tim"
-    ],
-    "0006": [
-      "pablo_monica"
-    ],
-    "0007": [
-      "ana_paula_mariana"
-    ],
-    "0008": [
-      "sebastian"
-    ]
+    "0001": ["laura_curry"],
+    "0002": ["radio_el_lugar"],
+    "0003": ["andres_cepeda"],
+    "0004": ["christian_mendoza"],
+    "0005": ["tim"],
+    "0006": ["pablo_monica"],
+    "0007": ["ana_paula_mariana"],
+    "0008": ["sebastian"]
   }
 }
