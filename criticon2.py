@@ -13,6 +13,7 @@ import cv2
 import zbarlight as zbar
 import festival
 from PIL import Image
+import RPi.GPIO as gpio
 
 # Debug mode
 DEBUG = False
@@ -26,101 +27,68 @@ if not DEBUG:
 else:
     RESOLUTION = (480, 270)
 
+gpio.setmode(gpio.BOARD)
+gpio.setup(8, gpio.OUT)
+
 json_file = open("data/db.json")
 
 db = json.load(json_file)
 
-# Initialise Raspberry Pi camera
-#camera = PiCamera()
-#camera.resolution = RESOLUTION
-
-#camera.framerate = 10
-#camera.vflip = True
-#camera.hflip = True
-#camera.color_effects = (128, 128)
-# set up stream buffer
-
-#rawCapture = PiRGBArray(camera, size=RESOLUTION)
-
 # allow camera to warm up
-time.sleep(0.1)
 
 cap = cv2.VideoCapture(0)
 
 print("Camera ready")
 
+#turn the led on
+gpio.output(8, gpio.HIGH)
+
 #seleccionar voz en espaõl
 festival.execCommand("(voice_JuntaDeAndalucia_es_sf_diphone)")
 # Initialise OpenCV window
 if DEBUG:
-    #cv2.namedWindow("#iothack15", cv2.WND_PROP_FULLSCREEN)
-    #cv2.setWindowProperty("#iothack15", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     cv2.namedWindow("#criticon")
 
 
 print("OpenCV version: %s" % cv2.__version__)
 print("Press q to exit ...")
 
-#scanner = zbar.ImageScanner()
-#scanner.parse_config('enable')
+wait = 4
+count = wait;
 
-
-#festival.sayText("Criticon ha despertado, buscando codigo de barras")
-os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+os.system( "echo criticó ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
 while(True):
     # Capture frame-by-frame
-    ret, frame = cap.read()
-
-
-    # raw detection code
+    cap.grab()
+    ret, frame = cap.retrieve()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY, dstCn=0)
     pilimg = Image.fromarray(gray)
     width, height = pilimg.size
-    #raw = pil.tobytes()
 
     # create a reader
-    #image = zbar.Image(width, height, 'Y800', raw)
     codes = zbar.scan_codes('code128', pilimg)
-    print(codes);
+    print(codes)
     if codes:
         for symbol in codes:
-            streeng = "decoded symbol: " + str(symbol)
-            print(streeng)
-            try:
-                tags = db['codes'][str(symbol)]
+            if count < wait:
+                count = count + 1
+            else:
+                count = 0;
+                data = symbol.decode('utf-8')
+                streeng = "decoded symbol: " + data
+                print(streeng)
+                try:
+                    tags = db['codes'][data]
+                    _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
+                    #text = _text.encode('utf-8')
+                    print(_text)
+                    cmd = "echo " + _text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
+                    os.system(cmd)
+                    #festival.sayText(text.encode('latin-1'))
 
-                _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
-                text = _text.encode('utf-8')
-                print(text)
-                cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
-                os.system(cmd)
-                #festival.sayText(text.encode('latin-1'))
-
-            except KeyError:
-                os.system( "echo criticón no reconoce el lenguaje de esta obra. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-
-    """
-    # extract results
-    for symbol in image:
-        # do something useful with results
-        streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
-        print(streeng)
-        try:
-            tags = db['codes'][str(symbol.data)]
-
-            _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
-            text = _text.encode('utf-8')
-            print(text)
-            cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
-            os.system(cmd)
-            #festival.sayText(text.encode('latin-1'))
-
-        except KeyError:
-            os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-
-    """
-
+                except KeyError:
+                    os.system( "echo criticón no reconoce el lenguaje de esta obra. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
 
     # show the frame
@@ -128,12 +96,14 @@ while(True):
         cv2.imshow("#criticon", frame)
 
     # clear stream for next frame
-    #rawCapture.truncate(0)
 
     # Wait for the magic key
     keypress = cv2.waitKey(1) & 0xFF
     if keypress == ord('q'):
         break
+
+#turn off led
+gpio.output(8, gpio.LOW)
 
 # When everything is done, release the capture
 camera.close()
