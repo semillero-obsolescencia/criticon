@@ -3,4 +3,5 @@ picamera==1.11
 Pillow==3.3.0
 pyfestival==0.5
 pyttsx==1.1
--e git://github.com/npinchot/zbar@5db4277fa8cd4f4bb334826057e35a545cdae311#egg=zbar
+RPi.GPIO==0.6.2
+zbarlight==1.0.2
