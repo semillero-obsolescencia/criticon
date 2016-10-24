@@ -26,7 +26,7 @@ if not DEBUG:
 else:
     RESOLUTION = (480, 270)
 
-json_file = open("data/db.json")
+json_file = open("data/vanilla_db.json")
 
 db = json.load(json_file)
 
@@ -85,9 +85,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
 	try:
-            tags = db['codes'][str(symbol.data)]
+            _text = db['codes'][str(symbol.data)]
 
-            _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
             text = _text.encode('utf-8')
             print(text)
             cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
@@ -96,7 +95,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
         except KeyError:
             os.system( "echo no reconozco el código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-            
+
 
 
     # show the frame
