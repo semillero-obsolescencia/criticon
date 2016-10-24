@@ -79,6 +79,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     # extract results
     for symbol in image:
+        sys.stdout.write("\a")
+	sys.stdout.flush()
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
