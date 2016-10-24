@@ -85,7 +85,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
 	try:
-            _text = db['codes'][str(symbol.data)]
+            _text = random.choicedb['conectores'] + db['codes'][str(symbol.data)]
 
             text = _text.encode('utf-8')
             print(text)
