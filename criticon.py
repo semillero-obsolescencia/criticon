@@ -95,7 +95,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
             #festival.sayText(text.encode('latin-1'))
 
         except KeyError:
-            os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+            os.system( "echo no reconozco el código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
             
 
 
