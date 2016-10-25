@@ -1,6 +1,7 @@
 # Criticón
 
-Carrito de mercado autónomo de generación de discursos estéticos.
+Carrito de mercado autónomo de generación de discursos estéticos. Esta es la version genérica.
+Y esta es otra versión 
 
 
 # Instalación
