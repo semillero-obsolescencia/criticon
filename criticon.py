@@ -30,6 +30,8 @@ json_file = open("data/vanilla_db.json")
 
 db = json.load(json_file)
 
+first_time = True
+
 # Initialise Raspberry Pi camera
 camera = PiCamera()
 camera.resolution = RESOLUTION
@@ -85,7 +87,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print streeng
 	try:
-            _text = random.choicedb['conectores'] + db['codes'][str(symbol.data)]
+            if(first_time):
+                first_time = False
+	        _text = random.choice(db['codes'][str(symbol.data)])
+            else:
+                _text = random.choice(db['conectores']) + random.choice(db['codes'][str(symbol.data)])
 
             text = _text.encode('utf-8')
             print(text)
