@@ -41,7 +41,7 @@ camera.resolution = RESOLUTION
 rawCapture = PiRGBArray(camera, size=RESOLUTION)
 # allow camera to warm up
 time.sleep(0.1)
-print "PiCamera ready"
+print( "PiCamera ready")
 
 #seleccionar voz en espaõl
 festival.execCommand("(voice_JuntaDeAndalucia_es_sf_diphone)")
@@ -52,8 +52,8 @@ if DEBUG:
     cv2.namedWindow("#criticon")
 
 
-print "OpenCV version: %s" % (cv2.__version__)
-print "Press q to exit ..."
+print("OpenCV version: %s" % (cv2.__version__))
+print("Press q to exit ...")
 
 scanner = zbar.ImageScanner()
 scanner.parse_config('enable')
@@ -80,11 +80,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     # extract results
     for symbol in image:
         sys.stdout.write("\a")
-	sys.stdout.flush()
+        sys.stdout.flush()
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
-        print streeng
-	try:
+        print(streeng)
+        try:
             tags = db['codes'][str(symbol.data)]
 
             _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
@@ -96,7 +96,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
         except KeyError:
             os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-            
+
 
 
     # show the frame
