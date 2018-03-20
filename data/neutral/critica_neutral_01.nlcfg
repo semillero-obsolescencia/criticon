@@ -1,0 +1,6 @@
+# critica neutral 01
+SENTENCE -> NOUN VERB ADJ;
+
+NOUN -> "Esta obra";
+VERB -> "es";
+ADJ -> "normal" | "regular" | "común";
