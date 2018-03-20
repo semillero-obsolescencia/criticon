@@ -15,6 +15,7 @@ import festival
 from PIL import Image
 import RPi.GPIO as gpio
 
+
 # Debug mode
 DEBUG = False
 if len(sys.argv) > 1:
@@ -30,9 +31,18 @@ else:
 gpio.setmode(gpio.BOARD)
 gpio.setup(8, gpio.OUT)
 
-json_file = open("data/db.json")
 
-db = json.load(json_file)
+# Initialise Raspberry Pi camera
+#camera = PiCamera()
+#camera.resolution = RESOLUTION
+
+#camera.framerate = 10
+#camera.vflip = True
+#camera.hflip = True
+#camera.color_effects = (128, 128)
+# set up stream buffer
+
+#rawCapture = PiRGBArray(camera, size=RESOLUTION)
 
 # allow camera to warm up
 
@@ -57,6 +67,7 @@ wait = 4
 count = wait;
 
 os.system( "echo criticó ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+
 
 while(True):
     # Capture frame-by-frame
@@ -89,6 +100,20 @@ while(True):
 
                 except KeyError:
                     os.system( "echo criticón no reconoce el lenguaje de esta obra. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+            streeng = "decoded symbol: " + str(symbol)
+            print(streeng)
+            try:
+                tags = db['codes'][str(symbol)]
+
+                _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
+                text = _text.encode('utf-8')
+                print(text)
+                cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
+                os.system(cmd)
+                #festival.sayText(text.encode('latin-1'))
+
+            except KeyError:
+                os.system( "echo criticón no reconoce el lenguaje de esta obra. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
 
     # show the frame

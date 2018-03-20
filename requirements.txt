@@ -1,7 +1,13 @@
+grako==3.99.9
+nlgen==0.1.2
 numpy==1.11.1
-picamera==1.11
+picamera==1.13
 Pillow==3.3.0
 pyfestival==0.5
+<<<<<<< HEAD
 pyttsx==1.1
 RPi.GPIO==0.6.2
 zbarlight==1.0.2
+=======
+zbar-py==1.0.4
+>>>>>>> frases

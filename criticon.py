@@ -10,9 +10,11 @@ import json
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 import cv2
+#import zbar
 import zbar
 import festival
 from PIL import Image
+from generador_frases import GeneradorFrases
 
 # Debug mode
 DEBUG = False
@@ -26,9 +28,13 @@ if not DEBUG:
 else:
     RESOLUTION = (480, 270)
 
-json_file = open("data/db.json")
+generador = GeneradorFrases(5)
+codes_filename = "data/codes.txt"
 
-db = json.load(json_file)
+with open(codes_filename) as f:
+    codes = f.readlines()
+    codes = [x.strip() for x in codes] 
+
 
 # Initialise Raspberry Pi camera
 camera = PiCamera()
@@ -41,7 +47,7 @@ camera.resolution = RESOLUTION
 rawCapture = PiRGBArray(camera, size=RESOLUTION)
 # allow camera to warm up
 time.sleep(0.1)
-print( "PiCamera ready")
+print("PiCamera ready")
 
 #seleccionar voz en espaõl
 festival.execCommand("(voice_JuntaDeAndalucia_es_sf_diphone)")
@@ -55,12 +61,17 @@ if DEBUG:
 print("OpenCV version: %s" % (cv2.__version__))
 print("Press q to exit ...")
 
-scanner = zbar.ImageScanner()
-scanner.parse_config('enable')
+#scanner = zbar.ImageScanner()
+scanner = zbar.Scanner()
+
+#scanner.parse_config('enable')
 
 
 #festival.sayText("Criticon ha despertado, buscando codigo de barras")
-os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+saludo = u"criticón ha despertado, buscando código de barras."
+
+os.system( "echo "+ saludo + " | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+#os.system( "echo "+ saludo + " | festival --tts")
 
 # Capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
@@ -74,28 +85,27 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     raw = pil.tobytes()
 
     # create a reader
-    image = zbar.Image(width, height, 'Y800', raw)
-    scanner.scan(image)
+    #image = zbar.Image(width, height, 'Y800', raw)
+    symbols = scanner.scan(gray)
 
     # extract results
-    for symbol in image:
-        sys.stdout.write("\a")
-        sys.stdout.flush()
+    for symbol in symbols:
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
+        code = str(symbol.data, 'utf-8')
+        #code = _code.encode('utf-8')
         print(streeng)
-        try:
-            tags = db['codes'][str(symbol.data)]
-
-            _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
-            text = _text.encode('utf-8')
+        print(code)
+        if code in codes:
+            text = generador.autogenerar()
+            #text = _text.encode('utf-8')
             print(text)
             cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
             os.system(cmd)
             #festival.sayText(text.encode('latin-1'))
 
-        except KeyError:
-            os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
+        else:
+            os.system( "echo criticón no entiende esta obra. Nada que decir | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
 
 

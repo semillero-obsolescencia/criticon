@@ -1,0 +1,5 @@
+# critica negativa 01
+SENTENCE -> NOUN VERB ADJ;
+NOUN -> "Esta obra";
+VERB -> "es";
+ADJ -> "fea" | "horrible" | "simple";

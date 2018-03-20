@@ -1,0 +1,5 @@
+# example.nlcfg
+SENTENCE -> NOUN VERB ADJ;
+NOUN -> "Esta obra";
+VERB -> "es";
+ADJ -> "bella" | "linda" | "interesante";
