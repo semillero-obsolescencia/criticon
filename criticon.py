@@ -56,8 +56,10 @@ if DEBUG:
 print("OpenCV version: %s" % (cv2.__version__))
 print("Press q to exit ...")
 
-scanner = zbar.ImageScanner()
-scanner.parse_config('enable')
+#scanner = zbar.ImageScanner()
+scanner = zbar.Scanner()
+
+#scanner.parse_config('enable')
 
 
 #festival.sayText("Criticon ha despertado, buscando codigo de barras")
@@ -75,11 +77,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     raw = pil.tobytes()
 
     # create a reader
-    image = zbar.Image(width, height, 'Y800', raw)
-    scanner.scan(image)
+    #image = zbar.Image(width, height, 'Y800', raw)
+    symbols = scanner.scan(gray)
 
     # extract results
-    for symbol in image:
+    for symbol in symbols:
         # do something useful with results
         streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
         print(streeng)

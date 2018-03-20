@@ -14,6 +14,7 @@ import zbarlight as zbar
 import festival
 from PIL import Image
 
+
 # Debug mode
 DEBUG = False
 if len(sys.argv) > 1:
@@ -29,6 +30,7 @@ else:
 json_file = open("data/db.json")
 
 db = json.load(json_file)
+
 
 # Initialise Raspberry Pi camera
 #camera = PiCamera()
@@ -68,6 +70,7 @@ print("Press q to exit ...")
 #festival.sayText("Criticon ha despertado, buscando codigo de barras")
 os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
 
+
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
@@ -99,28 +102,6 @@ while(True):
 
             except KeyError:
                 os.system( "echo criticón no reconoce el lenguaje de esta obra. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-
-    """
-    # extract results
-    for symbol in image:
-        # do something useful with results
-        streeng = "decoded " + str(symbol.type) + " symbol " + str(symbol.data)
-        print(streeng)
-        try:
-            tags = db['codes'][str(symbol.data)]
-
-            _text = random.choice(db[tags[0]]) + random.choice(db[tags[1]])
-            text = _text.encode('utf-8')
-            print(text)
-            cmd = "echo " + text + " | iconv -f utf-8 -t iso-8859-1 | festival --tts"
-            os.system(cmd)
-            #festival.sayText(text.encode('latin-1'))
-
-        except KeyError:
-            os.system( "echo criticón ha despertado, buscando código de barras. | iconv -f utf-8 -t iso-8859-1 | festival --tts")
-
-    """
-
 
 
     # show the frame
