@@ -1,7 +1,7 @@
+grako==3.99.9
+nlgen==0.1.2
 numpy==1.11.1
-picamera==1.11
+picamera==1.13
 Pillow==3.3.0
 pyfestival==0.5
-#pyttsx==1.1
-#-e git://github.com/npinchot/zbar@5db4277fa8cd4f4bb334826057e35a545cdae311#egg=zbar
-#zbarlight==1.0.2i
+zbar-py==1.0.4
