@@ -4,8 +4,9 @@ from __future__ import unicode_literals
 
 AUTHOR = u'sudo'
 SITENAME = u'Criticón '
+HIDE_SITENAME = True
 SITEURL = ''
-
+SITELOGO = 'images/logo-criticon-sm.png'
 PATH = 'content'
 OUTPUT_PATH = '../docs'
 TIMEZONE = 'America/Bogota'
@@ -32,4 +33,10 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-THEME = "theme/criticon"
+THEME = "theme/pelican-bootstrap3"
+
+PLUGIN_PATHS = ['pelican-plugins', ]
+PLUGINS = ['i18n_subsites', ]
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
